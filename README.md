@@ -1,90 +1,111 @@
+# ERC20 Sepolia to Amoy Bridge via fxPortal & MyCollectibles NFT Collection
 
-# ERC20 Sepolia to Amoy Bridge via fxPortal
-This project showcases how to utilize the fxPortal contracts to enable the seamless transfer of ERC20 tokens from the Sepolia Ethereum testnet to the Amoy Ethereum Polygon network.
+This project demonstrates how to utilize fxPortal contracts to bridge ERC20 tokens from the Sepolia Ethereum testnet to the Amoy Ethereum Polygon network. Additionally, it includes a MyCollectibles NFT Collection, showcasing how to create, manage, and bridge ERC721A tokens.
 
-### Bridging Process
-Follow these steps to successfully bridge ERC20 tokens from Sepolia to Amoy:
+## Prerequisites
 
-1. **Install Dependencies:**
-   Run `npm install` to install the required dependencies for the project.
+Before you begin, ensure you have the following:
 
-2. **Set Up Environment:**
-   Place your private key in the `.env.examples` file and rename it to `.env` once configured.
+- **Image Generation Tools:**  
+  Setup tools like DALLE 2, Midjourney, or Lexica to create NFT images.
 
-3. **Deploy ERC20 Contract:**
-   Deploy the ERC20 contract by executing the command `npx hardhat run scripts/deploy.js --network sepolia`. The contract address will be displayed once deployment is successful.
+- **IPFS Account:**  
+  Obtain an IPFS account for securely storing NFT images.
 
-4. **Configure Token Address:**
-   Replace the `tokenAddress` variable in other scripts with the newly deployed ERC20 contract address.
+- **Familiarity with Networks:**  
+  Understand the basics of Ethereum and Polygon networks.
 
-5. **Specify Your Public Key:**
-   Fill in your public key for the upcoming steps.
+- **Hardhat Framework:**  
+  Install the Hardhat framework for deploying and testing contracts.
 
-6. **Mint Tokens to Wallet:**
+## Bridging Process (ERC20 Sepolia to Amoy)
+
+Follow these steps to bridge ERC20 tokens from Sepolia to Amoy:
+
+1. **Install Dependencies:**  
+   Run `npm install` to install the required dependencies.
+
+2. **Set Up Environment:**  
+   Place your private key in the `.env.example` file, rename it to `.env`, and configure your settings.
+
+3. **Deploy ERC20 Contract:**  
+   Execute `npx hardhat run scripts/deploy.js --network sepolia` to deploy the ERC20 contract. The contract address will be displayed upon successful deployment.
+
+4. **Configure Token Address:**  
+   Replace the `tokenAddress` variable in the scripts with the newly deployed ERC20 contract address.
+
+5. **Specify Public Key:**  
+   Fill in your public key for the following steps.
+
+6. **Mint Tokens:**  
    Run `npx hardhat run scripts/mint.js --network sepolia` to mint tokens to your wallet.
 
-7. **Approve and Deposit Tokens:**
-   Approve and deposit your tokens to the Polygon network by executing `npx hardhat run scripts/approveDeposit.js --network sepolia`.
+7. **Approve and Deposit Tokens:**  
+   Approve and deposit tokens to the Polygon network by executing `npx hardhat run scripts/approveDeposit.js --network sepolia`.
 
-8. **Wait for Confirmation:**
-   Wait for approximately 20-30 minutes for the tokens to reflect in your Polygon account.
+8. **Wait for Confirmation:**  
+   Wait for approximately 20-30 minutes for the tokens to appear in your Polygon account.
 
-9. **Check Token Balance:**
-   Utilize polyscan.com to monitor your account and track the arrival of the tokens. Click on the transaction to retrieve the contract address for Polygon.
+9. **Check Token Balance on Polygon:**  
+   Use polyscan.com to monitor your account and track the arrival of tokens. Replace the `tokenAddress` variable in the `getBalance.js` script with the Polygon contract address, then run `npx hardhat run scripts/getBalance.js --network amoy` to view your balance.
 
-10. **Get Balance on Polygon:**
-    Replace the `tokenAddress` variable in the `getBalance.js` script with the obtained Polygon contract address. Run `npx hardhat run scripts/getBalance.js --network amoy` to view your new Polygon balance.
+## MyCollectibles NFT Collection
 
-# MyCollectibles NFT Collection
+The MyCollectibles NFT Collection project is designed for creating and managing a unique collection of NFTs using the ERC721A standard. The contract extends the ERC721A contract, enabling functionalities such as minting, transferring, and querying balances.
 
-Welcome to the MyCollectibles NFT Collection project! This repository contains a smart contract and scripts for creating and managing ERC721A tokens based on the MyCollectibles collection. This ReadMe provides an overview of the project's components, features, and execution steps.
+### Project Components
 
-## Project Overview
-
-The MyCollectibles NFT Collection project focuses on creating and managing a collection of unique Non-Fungible Tokens (NFTs) using the ERC721A standard. The smart contract `MyCollectibles` extends the ERC721A contract and provides functionality for minting NFTs, transferring them, and querying balances.
-
-## Smart Contract Details
-
-- **Contract:** The `MyCollectibles` contract is deployed and extends the ERC721A contract, serving as the blueprint for the NFT collection.
-- **Max Quantity:** The contract limits the total number of tokens that can be created to 5.
-- **Base URL:** The base URL for NFT metadata is set to an IPFS gateway.
-- **Prompt Description:** A prompt description is provided for users interacting with the NFT collection.
-- **Constructor:** The contract is initialized with a name, symbol, and owner address.
-- **Minting:** The contract owner can mint up to 5 NFTs at once.
-- **Base URI Override:** The base URI for NFTs is overridden to provide metadata URLs.
-- **Prompt Description Function:** Provides access to the stored prompt description.
-
-## Getting Started
-
-Before you begin, ensure you have the required tools and knowledge. Follow the steps outlined in the "Prerequisites" and "Execution" sections to successfully set up and execute the project.
-
-### Prerequisites
-
-- Setup image generation tools (DALLE 2, Midjourney, or Lexica).
-- Obtain an IPFS account for securely storing NFT images.
-- Familiarize yourself with Ethereum and Polygon networks.
-- Install the Hardhat framework for contract deployment and testing.
+- **Contract Details:**  
+  - **Contract:** `MyCollectibles` extends ERC721A, serving as the blueprint for the NFT collection.
+  - **Max Quantity:** The contract limits the total number of tokens to 5.
+  - **Base URI:** Set to an IPFS gateway for NFT metadata.
+  - **Prompt Description:** A description provided for user interaction with the NFT collection.
+  - **Constructor:** Initializes the contract with a name, symbol, and owner address.
+  - **Minting:** The owner can mint up to 5 NFTs at once.
+  - **Base URI Override:** Overrides the base URI for NFT metadata.
+  - **Prompt Description Function:** Provides access to the stored prompt description.
 
 ### Execution Steps
 
-1. **Generate Images:** Utilize AI models to create a collection of 5 unique NFT images.
-2. **IPFS Storage:** Upload the generated NFT images to IPFS for secure storage.
-3. **Deploy Contract:** Deploy the `MyCollectibles` contract on the Ethereum network.
-4. **Implement Function:** Enhance the contract by implementing the `getPromptDescription` function.
-5. **Mint NFTs:** Write a script to batch mint 5 NFTs to the contract.
-6. **Approve Transfer:** Prepare NFTs for transfer to the Polygon network.
-7. **Deposit to FxChain:** Deposit NFTs to the Ethereum FxChain network.
-8. **Check Balance:** Verify the NFT wallet balance on the FxChain network.
+1. **Generate Images:**  
+   Use AI models like DALLE 2, Midjourney, or Lexica to create a collection of 5 unique NFT images.
 
-## Script Details
+2. **IPFS Storage:**  
+   Upload the generated NFT images to IPFS for secure storage.
 
-- **Batch Mint ERC721A Tokens:** Mint 5 ERC721A tokens on the Ethereum network.
-- **Transfer ERC721A Tokens to Ethereum FxChain Network:** Transfer tokens to Ethereum FxChain.
-- **ERC721A Token Balance Checker:** Check token balance of a wallet address.
-  
+3. **Deploy Contract:**  
+   Deploy the `MyCollectibles` contract on the Ethereum network.
+
+4. **Enhance Contract:**  
+   Implement the `getPromptDescription` function in the contract.
+
+5. **Mint NFTs:**  
+   Write a script to batch mint 5 NFTs.
+
+6. **Approve Transfer:**  
+   Prepare NFTs for transfer to the Polygon network.
+
+7. **Deposit to FxChain:**  
+   Deposit NFTs to the Ethereum FxChain network.
+
+8. **Check Balance:**  
+   Verify the NFT wallet balance on the FxChain network.
+
+## Scripts Overview
+
+- **ERC20 Token Scripts:**
+  - `deploy.js`: Deploys the ERC20 contract.
+  - `mint.js`: Mints tokens to the wallet.
+  - `approveDeposit.js`: Approves and deposits tokens to Polygon.
+  - `getBalance.js`: Checks token balance on Polygon.
+
+- **ERC721A Token Scripts:**
+  - `mint.js`: Batch mint 5 NFTs.
+  - `transfer.js`: Transfer NFTs to Ethereum FxChain.
+  - `checkBalance.js`: Check NFT balance of a wallet address.
+
 ## Author
 Sayyed Murthuza
 
 ## License
-
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License].
