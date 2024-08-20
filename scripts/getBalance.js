@@ -9,7 +9,7 @@ const tokenContractJSON = require("../artifacts/contracts/MyCollectibles.sol/MyC
 
 const tokenAddress = "0xE7272b884CaD0126e5044D23af4427c89B96C3AA"; // place your erc20 contract address here
 const tokenABI = tokenContractJSON.abi;
-const walletAddress = "0xc73B9c5333125F8D760d8F0D413E06a416ce6aad"; // place your public address for your wallet here
+const walletAddress = "0xfA2173261C58A5C26e80230cbc9E456a34070B53"; // place your public address for your wallet here
 
 async function main() {
 
