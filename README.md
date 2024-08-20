@@ -81,6 +81,9 @@ Before you begin, ensure you have the required tools and knowledge. Follow the s
 - **Batch Mint ERC721A Tokens:** Mint 5 ERC721A tokens on the Ethereum network.
 - **Transfer ERC721A Tokens to Ethereum FxChain Network:** Transfer tokens to Ethereum FxChain.
 - **ERC721A Token Balance Checker:** Check token balance of a wallet address.
+  
+##Author
+Sayyed Murthuza
 
 ## License
 
